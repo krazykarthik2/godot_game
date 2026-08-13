@@ -27,9 +27,9 @@ jobs:
           archive_output: true
 
       - name: Install Butler
-        uses: webbertakken/butler@v2.0.0
-        with:
-          butler_api_key: ${{ secrets.BUTLER_CREDENTIALS }}
+        uses: remarkablegames/setup-butler@v3
 
       - name: Publish to Itch.io
         run: butler push build/Web "${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:html5"
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS }}
