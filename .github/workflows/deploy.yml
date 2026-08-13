@@ -37,7 +37,11 @@ jobs:
           echo "web_dir=$WEB_DIR" >> "$GITHUB_ENV"
 
       - name: Install Butler
-        uses: remarkablegames/setup-butler@v3
+        run: |
+          curl -L -o /tmp/butler.zip https://github.com/itchio/butler/releases/download/v15.30.0/butler-linux-amd64.zip
+          unzip -o /tmp/butler.zip -d /usr/local/bin/
+          chmod +x /usr/local/bin/butler
+          butler version
 
       - name: Publish to Itch.io
         run: butler push "$WEB_DIR" "${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:html5"
