@@ -39,11 +39,11 @@ jobs:
       - name: Install Butler
         run: |
           curl -L -o /tmp/butler.zip https://github.com/itchio/butler/releases/download/v15.30.0/butler-linux-amd64.zip
-          unzip -o /tmp/butler.zip -d /usr/local/bin/
-          chmod +x /usr/local/bin/butler
-          butler version
+          unzip -o /tmp/butler.zip -d /tmp/butler/
+          chmod +x /tmp/butler/linux-amd64/butler
+          /tmp/butler/linux-amd64/butler version
 
       - name: Publish to Itch.io
-        run: butler push "$WEB_DIR" "${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:html5"
+        run: /tmp/butler/linux-amd64/butler push "$WEB_DIR" "${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:html5"
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS }}
