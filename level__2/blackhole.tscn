@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bhkcdn3xohj3j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_od2av"]
+radius = 142.50613
+
+[sub_resource type="Gradient" id="Gradient_awfcs"]
+offsets = PackedFloat32Array(0.5828221, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jvk4h"]
+gradient = SubResource("Gradient_awfcs")
+fill = 1
+fill_from = Vector2(0.48262548, 0.5135135)
+fill_to = Vector2(0.88030887, 0.13513513)
+
+[node name="blackhole" type="Area2D" unique_id=1114293805]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=365878192]
+shape = SubResource("CircleShape2D_od2av")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1262446787]
+position = Vector2(2, -3.9999998)
+scale = Vector2(4.609375, 4.828125)
+texture = SubResource("GradientTexture2D_jvk4h")

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://0ycui40rgwjk"]
+
+[ext_resource type="Script" uid="uid://bv0vsi5y6o6ow" path="res://COMMONS/ui.gd" id="1_w5u52"]
+
+[node name="UI" type="CanvasLayer" unique_id=1691556592]
+script = ExtResource("1_w5u52")
+
+[node name="COINS" type="Label" parent="." unique_id=1439674981]
+offset_left = 74.0
+offset_top = 59.0
+offset_right = 199.0
+offset_bottom = 101.0
+theme_override_font_sizes/font_size = 40
+text = "COINS: 0"
+
+[node name="HEALTH" type="Label" parent="." unique_id=922660621]
+offset_left = 398.0
+offset_top = 554.0
+offset_right = 438.0
+offset_bottom = 577.0
+text = "HP"
+
+[node name="HP" type="ProgressBar" parent="." unique_id=1793020000]
+offset_left = 448.0
+offset_top = 553.0
+offset_right = 763.0
+offset_bottom = 580.0
+max_value = 0.0
+show_percentage = false

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://52tkpwixtctf"]
+
+[ext_resource type="Script" uid="uid://bx32a7s2gird5" path="res://COMMONS/canvas_group.gd" id="1_6kais"]
+
+[node name="CanvasGroup" type="CanvasLayer" unique_id=509603214]
+script = ExtResource("1_6kais")
+
+[node name="hp" type="Label" parent="." unique_id=1433688947]
+offset_left = 128.0
+offset_top = 542.0
+offset_right = 178.0
+offset_bottom = 597.0
+theme_override_font_sizes/font_size = 40

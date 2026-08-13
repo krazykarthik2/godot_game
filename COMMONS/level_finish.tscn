@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://b3d3ogjjfqbrm"]
+
+[ext_resource type="Script" uid="uid://c3put2ji7qufb" path="res://COMMONS_SCRIPTS/game_over.gd" id="1_wx6uy"]
+
+[node name="LevelFinish" type="CanvasLayer" unique_id=605695860]
+script = ExtResource("1_wx6uy")
+
+[node name="LEVEL_FINISH" type="Label" parent="." unique_id=936346008]
+offset_left = 221.0
+offset_top = 205.0
+offset_right = 977.0
+offset_bottom = 315.0
+theme_override_font_sizes/font_size = 80
+text = "LEVEL COMPLETED"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="RETRY" type="Button" parent="." unique_id=853948305]
+process_mode = 3
+offset_left = 333.0
+offset_top = 367.0
+offset_right = 583.0
+offset_bottom = 445.0
+theme_override_font_sizes/font_size = 50
+text = "RETRY"
+
+[node name="NEXTLVL" type="Button" parent="." unique_id=1272261121]
+process_mode = 3
+offset_left = 614.0
+offset_top = 367.0
+offset_right = 864.0
+offset_bottom = 445.0
+theme_override_font_sizes/font_size = 50
+text = "NEXT"
+
+[connection signal="pressed" from="RETRY" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="NEXTLVL" to="." method="_on_nextlvl_pressed"]

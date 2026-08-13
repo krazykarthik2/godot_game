@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cjq81kp1wjlg3"]
+
+[ext_resource type="Script" uid="uid://bg44wmd1a8exm" path="res://enemy/swimmer.gd" id="1_a5c2u"]
+[ext_resource type="Texture2D" uid="uid://c8rlj2c61p4y0" path="res://art/enemyWalking_1.png" id="2_vdc3c"]
+[ext_resource type="Texture2D" uid="uid://bx1bed7dg1l2u" path="res://art/enemyWalking_2.png" id="3_hwoix"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f85bv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vdc3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hwoix")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqns4"]
+size = Vector2(131, 96)
+
+[node name="swimmer" type="CharacterBody2D" unique_id=1957029650]
+motion_mode = 1
+script = ExtResource("1_a5c2u")
+
+[node name="swimmer" type="AnimatedSprite2D" parent="." unique_id=2114283507]
+sprite_frames = SubResource("SpriteFrames_f85bv")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1395600147]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_hqns4")

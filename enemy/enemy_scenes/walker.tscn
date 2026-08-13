@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dcfr2krfry103"]
+
+[ext_resource type="Script" uid="uid://xkcw3np1ghn0" path="res://enemy/walker.gd" id="1_weck7"]
+[ext_resource type="Texture2D" uid="uid://c8rlj2c61p4y0" path="res://art/enemyWalking_1.png" id="2_t2qcf"]
+[ext_resource type="Texture2D" uid="uid://bx1bed7dg1l2u" path="res://art/enemyWalking_2.png" id="3_qcrkq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f85bv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t2qcf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qcrkq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3t7bj"]
+size = Vector2(133, 97)
+
+[node name="walker" type="CharacterBody2D" unique_id=1431874240]
+motion_mode = 1
+script = ExtResource("1_weck7")
+
+[node name="walker" type="AnimatedSprite2D" parent="." unique_id=612634529]
+sprite_frames = SubResource("SpriteFrames_f85bv")
+autoplay = "default"
+frame_progress = 0.87802064
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1181632591]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_3t7bj")

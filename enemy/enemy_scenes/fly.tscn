@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://pwklkmbqi0ok"]
+
+[ext_resource type="Script" uid="uid://cjdpaakj3ua6p" path="res://enemy/fly.gd" id="1_rywcn"]
+[ext_resource type="Texture2D" uid="uid://bgnhhf6wp3jpj" path="res://art/enemyFlyingAlt_1.png" id="2_538xc"]
+[ext_resource type="Texture2D" uid="uid://ca0kp68eghpww" path="res://art/enemyFlyingAlt_2.png" id="3_iauox"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ydoe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_538xc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iauox")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir8iy"]
+size = Vector2(111, 154)
+
+[node name="fly" type="CharacterBody2D" unique_id=90205858]
+motion_mode = 1
+script = ExtResource("1_rywcn")
+
+[node name="fly" type="AnimatedSprite2D" parent="." unique_id=1041516254]
+sprite_frames = SubResource("SpriteFrames_8ydoe")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1606666392]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_ir8iy")

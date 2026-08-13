@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://ey3jsmoqsa4h"]
+
+[ext_resource type="Script" uid="uid://ckhjlbqo27nmu" path="res://enemy/enemyspawner.gd" id="1_502qe"]
+[ext_resource type="PackedScene" uid="uid://pwklkmbqi0ok" path="res://enemy/enemy_scenes/fly.tscn" id="2_365cf"]
+[ext_resource type="PackedScene" uid="uid://cjq81kp1wjlg3" path="res://enemy/enemy_scenes/swimmer.tscn" id="3_nb2wp"]
+[ext_resource type="PackedScene" uid="uid://dcfr2krfry103" path="res://enemy/enemy_scenes/walker.tscn" id="4_0mran"]
+[ext_resource type="Script" uid="uid://cq5ygod4ytoka" path="res://level__1/player/player.gd" id="5_502qe"]
+[ext_resource type="Texture2D" uid="uid://cibwfql38oyh7" path="res://art/playerGrey_up1.png" id="6_qum68"]
+[ext_resource type="Texture2D" uid="uid://bq8o6bg3fomk8" path="res://art/playerGrey_walk1.png" id="7_5aj4s"]
+[ext_resource type="Texture2D" uid="uid://q3a4tl1nikxn" path="res://art/playerGrey_up2.png" id="8_oe5ai"]
+[ext_resource type="PackedScene" uid="uid://52tkpwixtctf" path="res://COMMONS/canvas_group.tscn" id="9_rn5re"]
+[ext_resource type="Script" uid="uid://bheu2egckma7g" path="res://COMMONS_SCRIPTS/hpmonitor.gd" id="10_u677g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jvk4h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qum68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5aj4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_oe5ai")
+}],
+"loop": 2,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4d7sh"]
+size = Vector2(110, 133)
+
+[node name="Node2D" type="Node2D" unique_id=870020749]
+metadata/_edit_horizontal_guides_ = [-195.0]
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=1079625773]
+script = ExtResource("1_502qe")
+enemy_scenes = Array[PackedScene]([ExtResource("2_365cf"), ExtResource("3_nb2wp"), ExtResource("4_0mran")])
+
+[node name="player" type="CharacterBody2D" parent="EnemySpawner" unique_id=1401413689]
+position = Vector2(268, 229)
+script = ExtResource("5_502qe")
+
+[node name="player" type="AnimatedSprite2D" parent="EnemySpawner/player" unique_id=1455451903]
+position = Vector2(7, -2)
+sprite_frames = SubResource("SpriteFrames_jvk4h")
+autoplay = "default"
+frame = 2
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawner/player" unique_id=1646028231]
+position = Vector2(7, -1.5)
+shape = SubResource("RectangleShape2D_4d7sh")
+
+[node name="Timer" type="Timer" parent="EnemySpawner" unique_id=2011114658]
+
+[node name="hpmonitor" parent="EnemySpawner" unique_id=1639839371 node_paths=PackedStringArray("player") instance=ExtResource("9_rn5re")]
+script = ExtResource("10_u677g")
+player = NodePath("../player")
+
+[node name="Camera2D" type="Camera2D" parent="EnemySpawner" unique_id=27376282]
+position = Vector2(577, 331)
