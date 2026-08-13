@@ -1,0 +1,35 @@
+name: "Godot Build & Publish to Itch.io"
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  GODOT_VERSION: "4.7"
+  ITCH_USERNAME: "karthikkrazy"
+  ITCH_GAME_ID: "first-godot"
+
+jobs:
+  export-and-upload:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Export Game with Godot
+        uses: firebelley/godot-export@v6.0.0
+        with:
+          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/${{ env.GODOT_VERSION }}/Godot_v${{ env.GODOT_VERSION }}-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/${{ env.GODOT_VERSION }}/Godot_v${{ env.GODOT_VERSION }}-stable_export_templates.tpz
+          relative_project_path: "./"
+          archive_output: true
+
+      - name: Upload HTML5 Web Build to Itch.io
+        uses: ManleyDev/butler-publish-itchio-action@v1.0.3
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: html5
+          GAIN_LOCATION: ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}
+          PACKAGE: build/web
