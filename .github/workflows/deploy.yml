@@ -26,10 +26,10 @@ jobs:
           relative_project_path: "./"
           archive_output: true
 
-      - name: Upload HTML5 Web Build to Itch.io
-        uses: ManleyDev/butler-publish-itchio-action@v1.0.3
-        env:
-          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
-          CHANNEL: html5
-          GAIN_LOCATION: ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}
-          PACKAGE: build/web
+      - name: Install Butler
+        uses: webbertakken/butler@v2.0.0
+        with:
+          butler_api_key: ${{ secrets.BUTLER_CREDENTIALS }}
+
+      - name: Publish to Itch.io
+        run: butler push build/Web "${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:html5"
