@@ -44,6 +44,6 @@ jobs:
           /tmp/butler/linux-amd64/butler version
 
       - name: Publish to Itch.io
-        run: /tmp/butler/linux-amd64/butler push "$WEB_DIR" "${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:html5"
+        run: /tmp/butler/linux-amd64/butler push "$web_dir" "${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:html5"
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS }}
